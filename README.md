@@ -1,7 +1,7 @@
 # EventManagementApp
 
 
-##Database: 
+#Database: 
   bookthatshowdatabase
 Tables:
   theatre
