@@ -1,10 +1,12 @@
-package com.kozznation.eventManagement.model;
+package com.kozznation.eventManagement.dao;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.Table;
 
-
-public class Ticket {
+@Entity
+@Table(name = "ticket")
+public class TicketDto {
 
 	@Id
 	private long id;

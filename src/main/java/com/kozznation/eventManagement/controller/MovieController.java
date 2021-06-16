@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.kozznation.eventManagement.dao.MovieDto;
 import com.kozznation.eventManagement.model.Movie;
 import com.kozznation.eventManagement.repository.MovieRepository;
 
@@ -30,17 +31,17 @@ public class MovieController {
 
 
 	@RequestMapping(value = "/movies/", method = RequestMethod.GET)
-	public List<Movie> getMovies() {
-		return (List<Movie>) this.movieRepository.findAll();
+	public List<MovieDto> getMovies() {
+		return (List<MovieDto>) this.movieRepository.findAll();
 	}
 	
 	@RequestMapping(value = "/movies", method = RequestMethod.GET)
-	public Movie getMovieTitleByName(@RequestParam(name = "name", required = true) String name) {
+	public MovieDto getMovieTitleByName(@RequestParam(name = "name", required = true) String name) {
 		return this.movieRepository.findByTitle(name);
 	}
 	@GetMapping("/movies/{id}")
 	@ResponseBody
-	public Optional<Movie> getMovieTitleById(@PathVariable(name = "id", required = false) long id) {
+	public Optional<MovieDto> getMovieTitleById(@PathVariable(name = "id", required = false) long id) {
 		return this.movieRepository.findById(id);
 	}
 	

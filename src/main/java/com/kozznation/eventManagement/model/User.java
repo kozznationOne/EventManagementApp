@@ -3,8 +3,8 @@ package com.kozznation.eventManagement.model;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 
-@Entity
-public class UserData {
+
+public class User {
 
 	@Id
 	private long id;

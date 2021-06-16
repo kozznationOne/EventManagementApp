@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.kozznation.eventManagement.dao.ShowDto;
 import com.kozznation.eventManagement.model.Show;
 import com.kozznation.eventManagement.repository.ShowRepository;
 
@@ -22,9 +23,9 @@ public class ShowController {
 	}
 	
 	@RequestMapping(value = "/shows", method = RequestMethod.GET)
-	public List<Show> getShowByScreenIdAndMovieId(@RequestParam(name = "screenId", required = false) long screenId,
+	public List<ShowDto> getShowByScreenIdAndMovieId(@RequestParam(name = "screenId", required = false) long screenId,
 			@RequestParam(name = "movieId", required = false) long movieId) {
-		return (List<Show>) this.showRepository.findByScreenIdAndMovieId(screenId, movieId);
+		return (List<ShowDto>) this.showRepository.findByScreenIdAndMovieId(screenId, movieId);
 	}
 	
 }

@@ -1,12 +1,14 @@
-package com.kozznation.eventManagement.model;
+package com.kozznation.eventManagement.dao;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
-
-public class Movie {
+@Entity
+@Table(name = "movies")
+public class MovieDto {
 	
+	@Id
     private long id;
     private String title;
     private String director;

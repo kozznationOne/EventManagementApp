@@ -2,11 +2,12 @@ package com.kozznation.eventManagement.repository;
 
 import org.springframework.data.repository.CrudRepository;
 
+import com.kozznation.eventManagement.dao.TheatreDto;
 import com.kozznation.eventManagement.model.Theatre;
 
-public interface TheatreRepository extends CrudRepository<Theatre, Long>{
+public interface TheatreRepository extends CrudRepository<TheatreDto, Long>{
 
-	Theatre findByName(String name);
+	TheatreDto findByName(String name);
 	
 
 }

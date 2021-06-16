@@ -1,4 +1,4 @@
-package com.kozznation.eventManagement.model;
+package com.kozznation.eventManagement.dao;
 
 import java.time.LocalTime;
 
@@ -7,13 +7,17 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 //import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
+import javax.persistence.Table;
 
-
-public class Show {
+@Entity
+@Table(name = "show")
+public class ShowDto {
 	@Id
 	private long id;
 	private long screenId;
-	private Movie movie;
+	@OneToOne
+	@JoinColumn(name = "movieId", referencedColumnName = "id")
+	private MovieDto movie;
 	private LocalTime startTime;
 	public long getId() {
 		return id;
@@ -39,10 +43,10 @@ public class Show {
 	public void setStartTime(LocalTime startTime) {
 		this.startTime = startTime;
 	}
-	public Movie getMovie() {
+	public MovieDto getMovie() {
 		return movie;
 	}
-	public void setMovie(Movie movie) {
+	public void setMovie(MovieDto movie) {
 		this.movie = movie;
 	}
 	

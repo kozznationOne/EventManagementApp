@@ -4,8 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
-import javax.persistence.Id;
-
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -14,7 +12,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.kozznation.eventManagement.model.Movie;
+import com.kozznation.eventManagement.dao.TicketDto;
 import com.kozznation.eventManagement.model.Ticket;
 import com.kozznation.eventManagement.repository.TicketRepository;
 
@@ -29,22 +27,22 @@ public class TicketController {
 	}
 	
 	@RequestMapping(method = RequestMethod.GET, value = "/tickets")
-	public List<Ticket> getTickets(){
-		return (List<Ticket>) ticketRepository.findAll();
+	public List<TicketDto> getTickets(){
+		return (List<TicketDto>) ticketRepository.findAll();
 	}
 	
 	@GetMapping("/tickets/{id}")
 	@ResponseBody
-	public Optional<Ticket> getTicketById(@PathVariable(name = "id", required = false) long id) {
+	public Optional<TicketDto> getTicketById(@PathVariable(name = "id", required = false) long id) {
 		return this.ticketRepository.findById(id);
 	}
 	
 	@RequestMapping(method = RequestMethod.POST, value="/tickets/")
-	public List<Optional<Ticket>> addTickets(@RequestBody List<Ticket> tickets) {
+	public List<Optional<TicketDto>> addTickets(@RequestBody List<TicketDto> tickets) {
 		ticketRepository.saveAll(tickets);
-		List<Optional<Ticket>> ticketList = new ArrayList<>();
-		for(Ticket ticket: tickets) {
-			Optional<Ticket> t = ticketRepository.findById(ticket.getId()); 
+		List<Optional<TicketDto>> ticketList = new ArrayList<>();
+		for(TicketDto ticket: tickets) {
+			Optional<TicketDto> t = ticketRepository.findById(ticket.getId()); 
 			ticketList.add(t);
 		}
 		return ticketList;

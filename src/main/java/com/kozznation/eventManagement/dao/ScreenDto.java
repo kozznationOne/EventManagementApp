@@ -1,9 +1,13 @@
-package com.kozznation.eventManagement.model;
+package com.kozznation.eventManagement.dao;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.Table;
 
-public class Screen {
+@Entity
+@Table(name = "screen")
+public class ScreenDto {
+	@Id
 	private long id;
 	private long theatreId;
 	private long numberOfSeats;

@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.kozznation.eventManagement.dao.TheatreDto;
 import com.kozznation.eventManagement.model.Theatre;
 import com.kozznation.eventManagement.repository.TheatreRepository;
 
@@ -29,17 +30,17 @@ public class TheatreController {
 	}
 
 	@RequestMapping(value = "/theatres/", method = RequestMethod.GET)
-	public List<Theatre> getTheatre() {
-		return (List<Theatre>) this.theatreRepository.findAll();
+	public List<TheatreDto> getTheatre() {
+		return (List<TheatreDto>) this.theatreRepository.findAll();
 	}
 	
 	@RequestMapping(value = "/theatres", method = RequestMethod.GET)
-	public Theatre getTheatreByName(@RequestParam(name = "name", required = true) String name) {
+	public TheatreDto getTheatreByName(@RequestParam(name = "name", required = true) String name) {
 		return this.theatreRepository.findByName(name);
 	}
 	@GetMapping("/theatres/{id}")
 	@ResponseBody
-	public Optional<Theatre> getTheatreById(@PathVariable(name = "id", required = false) long id) {
+	public Optional<TheatreDto> getTheatreById(@PathVariable(name = "id", required = false) long id) {
 		return this.theatreRepository.findById(id);
 	}
 
