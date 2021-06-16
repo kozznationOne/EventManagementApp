@@ -2,6 +2,8 @@ package com.kozznation.eventManagement.dao;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -9,7 +11,9 @@ import javax.persistence.Table;
 public class ScreenDto {
 	@Id
 	private long id;
-	private long theatreId;
+	@OneToOne
+	@JoinColumn(name = "theatreId", referencedColumnName = "id")
+	private TheatreDto theatre;
 	private long numberOfSeats;
 	public long getId() {
 		return id;
@@ -17,11 +21,11 @@ public class ScreenDto {
 	public void setId(long id) {
 		this.id = id;
 	}
-	public long getTheatreId() {
-		return theatreId;
+	public TheatreDto getTheatre() {
+		return theatre;
 	}
-	public void setTheatreId(long theatreId) {
-		this.theatreId = theatreId;
+	public void setTheatre(TheatreDto theatre) {
+		this.theatre = theatre;
 	}
 	public long getNumberOfSeats() {
 		return numberOfSeats;

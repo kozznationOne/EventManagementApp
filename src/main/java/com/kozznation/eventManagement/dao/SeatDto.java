@@ -2,6 +2,8 @@ package com.kozznation.eventManagement.dao;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -9,22 +11,32 @@ import javax.persistence.Table;
 public class SeatDto {
 	@Id
 	private long id;
-	private long showId;
+	@OneToOne
+	@JoinColumn(name = "showId", referencedColumnName = "id")
+	private ShowDto show;
 	private long seatNumber;
 	private long rowNumber;
 	private boolean booked;
+	
+	
+	public ShowDto getShow() {
+		return show;
+	}
+	public void setShow(ShowDto show) {
+		this.show = show;
+	}
 	public long getId() {
 		return id;
 	}
 	public void setId(long id) {
 		this.id = id;
 	}
-	public long getShowId() {
-		return showId;
-	}
-	public void setShowId(long showId) {
-		this.showId = showId;
-	}
+//	public ShowDto getShowId() {
+//		return showId;
+//	}
+//	public void setShowId(long showId) {
+//		this.showId = showId;
+//	}
 	public long getSeatNumber() {
 		return seatNumber;
 	}
@@ -43,6 +55,7 @@ public class SeatDto {
 	public void setBooked(boolean booked) {
 		this.booked = booked;
 	}
+	
 	
 	
 }

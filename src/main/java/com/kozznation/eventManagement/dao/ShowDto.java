@@ -14,7 +14,9 @@ import javax.persistence.Table;
 public class ShowDto {
 	@Id
 	private long id;
-	private long screenId;
+	@OneToOne
+	@JoinColumn(name = "screenId", referencedColumnName = "id")
+	private ScreenDto screen;
 	@OneToOne
 	@JoinColumn(name = "movieId", referencedColumnName = "id")
 	private MovieDto movie;
@@ -25,18 +27,12 @@ public class ShowDto {
 	public void setId(long id) {
 		this.id = id;
 	}
-	public long getScreenId() {
-		return screenId;
+	public ScreenDto getScreen() {
+		return screen;
 	}
-	public void setScreenId(long screenId) {
-		this.screenId = screenId;
+	public void setScreen(ScreenDto screen) {
+		this.screen = screen;
 	}
-//	public long getMovieId() {
-//		return movieId;
-//	}
-//	public void setMovieId(long movieId) {
-//		this.movieId = movieId;
-//	}
 	public LocalTime getStartTime() {
 		return startTime;
 	}
