@@ -9,7 +9,7 @@ public class User {
 	@Id
 	private long id;
 	private String name;
-	
+	private String role;
 	public long getId() {
 		return id;
 	}
@@ -21,5 +21,13 @@ public class User {
 	}
 	public void setName(String name) {
 		this.name = name;
+	}
+
+	public String getRole() {
+		return role;
+	}
+
+	public void setRole(String role) {
+		this.role = role;
 	}
 }

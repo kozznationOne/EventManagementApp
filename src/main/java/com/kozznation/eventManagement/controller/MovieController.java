@@ -14,7 +14,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.kozznation.eventManagement.dao.MovieDto;
-import com.kozznation.eventManagement.model.Movie;
 import com.kozznation.eventManagement.model.MoviePage;
 import com.kozznation.eventManagement.repository.MovieDaoRepository;
 import com.kozznation.eventManagement.repository.MovieRepository;
